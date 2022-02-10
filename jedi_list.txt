@@ -3,4 +3,6 @@ Obi-Wan Kenobi
 Mace Windu
 Yoda
 Luke Skywalker
-Leia Skywalker 
+Leia Skywalker
+Ezra Bridger
+Cal Kestis
