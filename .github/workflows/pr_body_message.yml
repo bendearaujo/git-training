@@ -5,9 +5,16 @@ on:
 name: Pull Request updated
 
 jobs:
-  history:
-    name: Pull Request Body
+  commits_check_job:
     runs-on: ubuntu-latest
+    name: Commits Check
     steps:
-      - name: Pull Request Body
-        uses: technote-space/pr-commit-body-action@v1
+    - name: Get PR Commits
+      id: 'get-pr-commits'
+      uses: tim-actions/get-pr-commits@master
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Commit Body Check
+      uses: tim-actions/commit-body-check@master
+      with:
+        commits: ${{ steps.get-pr-commits.outputs.commits }
