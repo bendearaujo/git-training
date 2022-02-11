@@ -1,20 +1,17 @@
-on:
-  pull_request:
-    types: [opened, synchronize]
-
-name: Pull Request updated
-
+name: GitHub Actions Demo
+on: [push]
 jobs:
-  commits_check_job:
+  Explore-GitHub-Actions:
     runs-on: ubuntu-latest
-    name: Commits Check
     steps:
-    - name: Get PR Commits
-      id: 'get-pr-commits'
-      uses: tim-actions/get-pr-commits@master
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Commit Body Check
-      uses: tim-actions/commit-body-check@master
-      with:
-        commits: ${{ steps.get-pr-commits.outputs.commits }
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
